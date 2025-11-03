@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hype — Language Documentation</title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Victor+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724; --panel:#0b1220; --muted:#9aa7b2; --accent:#7c5cff; --text:#e6f0ff;
+      --glass: rgba(255,255,255,0.03);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:'Inter',ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,'Helvetica Neue',Arial;color:var(--text);background:linear-gradient(180deg,#071025 0%,#071025 60%,#051018 100%);}
+    .container{display:grid;grid-template-columns:300px 1fr;gap:24px;max-width:1200px;margin:36px auto;padding:24px}
+    .sidebar{background:var(--panel);border-radius:12px;padding:18px;box-shadow:0 6px 20px rgba(2,6,23,0.6);min-height:480px}
+    .brand{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#4fb6ff);display:flex;align-items:center;justify-content:center;font-weight:700;color:white}
+    .toc{margin-top:8px}
+    .toc a{display:block;color:var(--muted);text-decoration:none;padding:8px;border-radius:8px}
+    .toc a:hover{background:var(--glass);color:var(--text)}
+
+    .doc{background:rgba(255,255,255,0.02);padding:28px;border-radius:14px;box-shadow:0 8px 30px rgba(2,6,23,0.6);min-height:480px}
+    header h1{margin:0;font-size:28px}
+    header p{color:var(--muted);margin-top:6px}
+
+    section{margin-top:22px}
+    pre{background:#07101a;padding:14px;border-radius:10px;overflow:auto;color:#dbeafe}
+    code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Roboto Mono,monospace;font-size:13px}
+
+    .meta{display:flex;gap:12px;align-items:center;margin-top:12px}
+    .badge{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;color:var(--muted);font-size:13px}
+
+    .kbd{background:#071018;padding:8px;border-radius:6px;font-size:13px;color:var(--muted)}
+    .columns{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+    .playground{margin-top:16px}
+    textarea{width:100%;min-height:160px;padding:12px;background:#07101a;border:1px solid rgba(255,255,255,0.03);color:var(--text);border-radius:8px;font-family:ui-monospace,monospace}
+    .btn{display:inline-block;padding:8px 12px;border-radius:8px;background:linear-gradient(90deg,var(--accent),#4fb6ff);color:white;text-decoration:none;border:none;cursor:pointer}
+    .muted{color:var(--muted)}
+
+    /* small */
+    @media (max-width:880px){.container{grid-template-columns:1fr;padding:16px}.sidebar{order:2}.doc{order:1}}
+
+    /* simple keyword highlighting */
+    .hl-key{color:#ffd580}
+    .hl-fn{color:#7ee787}
+    .hl-num{color:#ffa3c0}
+    .hl-str{color:#9ad1ff}
+    .controls{display:flex;gap:8px;align-items:center}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">HY</div>
+        <div>
+          <strong>Hype</strong>
+          <div class="muted" style="font-size:13px">Lightweight, expressive language</div>
+        </div>
+      </div>
+      <div class="meta">
+        <div class="badge">v0.1</div>
+        <div class="badge">Docs</div>
+        <div style="margin-left:auto" class="muted">Updated: Nov 2, 2025</div>
+      </div>
+
+      <nav class="toc">
+        <a href="#intro">Introduction</a>
+        <a href="#getting-started">Getting started</a>
+        <a href="#syntax">Syntax</a>
+        <a href="#types">Types</a>
+        <a href="#control">Control flow</a>
+        <a href="#stdlib">Standard library</a>
+        <a href="#examples">Examples</a>
+        <a href="#playground">Playground</a>
+        <a href="#tooling">Tooling</a>
+        <a href="#license">License</a>
+      </nav>
+      <div style="margin-top:18px;color:var(--muted);font-size:13px">Tip: Use the playground to test snippets, then press <span class="kbd">Copy</span>.</div>
+    </aside>
+
+    <main class="doc">
+      <header>
+        <h1>Hype — Language documentation</h1>
+        <p>A short, friendly reference for Hype: syntax, examples, and a small in-browser playground.</p>
+      </header>
+
+      <section id="intro">
+        <h2>Introduction</h2>
+        <p>Hype is a minimal, readable language designed for teaching and prototyping. It blends familiar C-like control flow with Python-like readability.</p>
+      </section>
+
+      <section id="getting-started">
+        <h2>Getting started</h2>
+        <p>Save your source in <code>.hy</code> files. A simple CLI tool <code>hypec</code> compiles to a hypothetical bytecode or transpiles to JavaScript (TBA).</p>
+        <div class="columns">
+          <div>
+            <h3>File example</h3>
+            <pre><code class="lang-hype">// hello.hy
+print("Hello, Hype!")</code></pre>
+          </div>
+          <div>
+            <h3>Compile</h3>
+            <pre><code class="lang-shell">$ hypec build hello.hy -o hello.js</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section id="syntax">
+        <h2>Syntax</h2>
+        <p>Hype aims to be concise. Key features:</p>
+        <ul>
+          <li>Significant whitespace optional — use braces for blocks.</li>
+          <li>First-class functions and simple ADTs.</li>
+        </ul>
+
+        <h3>Comments</h3>
+        <pre><code class="lang-hype">// single-line comment
+/* multi-line
+   comment */</code></pre>
+
+        <h3>Variables & assignment</h3>
+        <pre><code class="lang-hype">let x = 10
+mut count = 0
+const PI = 3.14159</code></pre>
+
+        <h3>Functions</h3>
+        <pre><code class="lang-hype">fn add(a, b) {
+  return a + b
+}
+
+print(add(2,3))  // 5</code></pre>
+      </section>
+
+      <section id="types">
+        <h2>Types</h2>
+        <p>Primitive types: <code>int</code>, <code>float</code>, <code>string</code>, <code>bool</code>. Collections: <code>list</code>, <code>map</code>.</p>
+        <pre><code class="lang-hype">let s: string = "hello"
+let arr: list[int] = [1,2,3]
+let m: map[string,int] = {"a":1}</code></pre>
+      </section>
+
+      <section id="control">
+        <h2>Control flow</h2>
+        <pre><code class="lang-hype">if x > 5 {
+  print("big")
+} else {
+  print("small")
+}
+
+for i in 0..10 {
+  print(i)
+}
+
+while cond {
+  // loop
+}</code></pre>
+      </section>
+
+      <section id="stdlib">
+        <h2>Standard library</h2>
+        <p>Common utilities: <code>print()</code>, <code>map</code>, <code>reduce</code>, <code>io.read()</code>. More coming soon.</p>
+      </section>
+
+      <section id="examples">
+        <h2>Examples</h2>
+        <h3>Factorial</h3>
+        <pre><code class="lang-hype">fn fact(n) {
+  if n <= 1 { return 1 }
+  return n * fact(n-1)
+}
+print(fact(6))  // 720</code></pre>
+
+        <h3>FizzBuzz</h3>
+        <pre><code class="lang-hype">for i in 1..100 {
+  if i % 15 == 0 { print("FizzBuzz") }
+  else if i % 3 == 0 { print("Fizz") }
+  else if i % 5 == 0 { print("Buzz") }
+  else { print(i) }
+}</code></pre>
+      </section>
+
+      <section id="playground">
+        <h2>Playground</h2>
+        <p>Type a snippet, click <strong>Highlight</strong> to apply basic Hype highlighting, or <strong>Copy</strong> to copy to clipboard.</p>
+        <div class="controls">
+          <button class="btn" id="hlBtn">Highlight</button>
+          <button class="btn" id="copyBtn">Copy</button>
+          <button class="btn" id="resetBtn">Reset</button>
+        </div>
+        <div class="playground">
+          <textarea id="editor">fn greet(name) {
+  print("Hello, " + name)
+}
+
+greet("World")</textarea>
+          <h4 style="margin-top:12px">Result (highlighted)</h4>
+          <pre id="out"><code class="preview"></code></pre>
+        </div>
+      </section>
+
+      <section id="tooling">
+        <h2>Tooling</h2>
+        <p>Planned tools:</p>
+        <ul>
+          <li><strong>hypec</strong> — compiler/transpiler</li>
+          <li><strong>hypefmt</strong> — code formatter</li>
+          <li><strong>language server</strong> — editor integration</li>
+        </ul>
+      </section>
+
+      <section id="license">
+        <h2>License</h2>
+        <p>Specify your license here (MIT recommended for open source).</p>
+      </section>
+
+      <footer style="margin-top:18px;color:var(--muted);font-size:13px">Created with ❤️ — Edit this file to match Hype's real specs.</footer>
+    </main>
+  </div>
+
+  <script>
+    // Very small, local "highlighter" for the playground & examples.
+    const keywords = ["fn","let","mut","const","if","else","for","in","while","return","print","true","false","null"];
+    function basicHypeHL(code){
+      // escape HTML
+      let out = code.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      // strings
+      out = out.replace(/(".*?("|$))/g, '<span class="hl-str">$1</span>');
+      // numbers
+      out = out.replace(/\b(\d+\.?\d*)\b/g, '<span class="hl-num">$1</span>');
+      // keywords
+      for(const k of keywords){
+        const re = new RegExp('\\b'+k+'\\b','g');
+        out = out.replace(re, '<span class="hl-key">'+k+'</span>');
+      }
+      // function calls (simple)
+      out = out.replace(/\b([a-zA-Z_][a-zA-Z0-9_]*)\s*(?=\()/g, '<span class="hl-fn">$1</span>');
+      return out;
+    }
+
+    // apply to all code blocks with class lang-hype
+    document.querySelectorAll('code.lang-hype').forEach(el=>{
+      el.innerHTML = basicHypeHL(el.textContent);
+    });
+
+    // Playground controls
+    const editor = document.getElementById('editor');
+    const out = document.querySelector('#out code');
+    const hlBtn = document.getElementById('hlBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const resetBtn = document.getElementById('resetBtn');
+
+    hlBtn.addEventListener('click', ()=>{
+      out.innerHTML = basicHypeHL(editor.value);
+    });
+    copyBtn.addEventListener('click', async ()=>{
+      try{
+        await navigator.clipboard.writeText(editor.value);
+        copyBtn.textContent = 'Copied!';
+        setTimeout(()=> copyBtn.textContent = 'Copy',1200);
+      }catch(e){
+        alert('Unable to copy: '+e);
+      }
+    });
+    resetBtn.addEventListener('click', ()=>{
+      editor.value = 'fn greet(name) {\n  print("Hello, " + name)\n}\n\n// Try: greet("World")';
+      out.innerHTML = '';
+    });
+
+    // small helpers for copy buttons on code blocks (optional)
+    document.querySelectorAll('pre').forEach(pre=>{
+      const btn = document.createElement('button');
+      btn.className = 'btn';
+      btn.style.marginBottom = '8px';
+      btn.textContent = 'Copy';
+      btn.addEventListener('click', async ()=>{
+        try{ await navigator.clipboard.writeText(pre.textContent); btn.textContent='Copied!'; setTimeout(()=>btn.textContent='Copy',1000);}catch(e){alert('copy failed')}
+      });
+      pre.parentNode.insertBefore(btn, pre);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #182747;
+    color: #ffffff;
+    height:100%;
+}
+
+header {
+    background-color: #0f1c3d;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 6.5em;
+    padding-top: 0;
+    margin: 0;
+}
+
+.hype-font {
+    font-family: 'Victor Mono', cursive;
+    color: #8e9dbe;
+}
+
+.get-started {
+    background-color: #618bff;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 0.5 em;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    width: 235px;
+    font-family: 'Inter', sans-serif;
+}
+
+.view-github {
+    background-color: #4a4c50;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 0.5 em;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    width: 235px;
+    font-family: 'Inter', sans-serif;
+}
+
+.get-started:hover {
+    background-color: #4a6ef8;
+}
+
+.view-github:hover {
+    background-color: #101111;
+}
+
+.welcome-to-hype {
+    font-size: 3.5em;
+    margin-top: 20px;
+}
+
+#toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+}
+
+.toast {
+  padding: 12px 20px;
+  border-radius: 8px;
+  color: white;
+  min-width: 250px;
+  opacity: 0;
+  transform: translateX(100%);
+  animation: slideIn 0.5s forwards, fadeOut 0.5s 3.5s forwards;
+}
+
+.toast.success {
+  background: #22c55e;
+}
+
+.toast.error {
+  background: #ef4444;
+}
+
+.toast.info {
+  background: #3b82f6;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.topbar {
+    background-color: #182747;
+    color: #000;
+    height: 65px;
+    width: 100%;
+    position: sticky;
+    top: 0;
+
+}
+
+.topbar h1 {
+    margin-left: 20px;
+    font-size: 40px;
+    float: left;
+}
+
+.topbar nav {
+    float: right;
+    margin-right: 20px;
+    line-height: 65px;
+    justify-content: center;
+}
+
+.topbar nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 18px;
+    transition: text-decoration 0.3s ease;
+    margin-right: 8px;
+}
+
+.topbar nav a:hover {
+    text-decoration: underline;
+}
+
+.gallery-btn {
+    background-color: #618bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+}
+
+.marketing-div {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.marketing-div p {
+    font-size: 18px;
+    max-width: 400px;
+    line-height: 1.6;
+}
+
+.marketing-div h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    margin-right: 70px;
+}
+
+.credits-div {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ffffff;
+    width: 100%;
+    background-color: #0f1c3d;
+}
+
+.credit-pfp {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-bottom: 5px;
+}
+
+footer {
+    background-color: #0f1c3d;
+    color: white;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.banner {
+  width: 100%;
+  padding: 25px 0;
+  background: linear-gradient(90deg, #3b47b7, #5865f2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.scroll {
+  display: flex;
+  white-space: nowrap;
+  animation: scroll 14s linear infinite;
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  font-family: 'Arial Black', sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+  color: white;
+  text-transform: uppercase;
+}
+
+.icon {
+  width: 45px;
+  height: 45px;
+  filter: brightness(0) invert(1);
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-30%);
+  }
+}
+
+.link-picture {
+    width: 45x;
+    height: 45px;
+    margin-left: 6px;
+    filter: brightness(0) invert(1);
+}
