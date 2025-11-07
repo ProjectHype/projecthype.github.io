@@ -264,3 +264,17 @@ footer {
     margin-left: 6px;
     filter: brightness(0) invert(1);
 }
+
+#left-button {
+  float: left;
+  background-color: #3b82f6;
+  border-radius: 50px;
+
+}
+
+#right-button {
+  float: right;
+  background-color: #3b82f6;
+  border-radius: 50px;
+  
+}

@@ -57,3 +57,39 @@ function scrollBanner() {
   if (Math.abs(scrollAmount) > banner.scrollWidth / 2) scrollAmount = 0;
   requestAnimationFrame(scrollBanner);
 }
+
+// Display Thing:
+
+const screens = [
+  document.getElementById('1'),
+  document.getElementById('2'),
+  document.getElementById('3')
+]
+
+const one = document.getElementById('1');
+const two = document.getElementById('2');
+const three = document.getElementById('3');
+
+const left = document.getElementById('left-button');
+const right = document.getElementById('right-button');
+
+let current = 0; // index of the current visible div
+
+function showScreen(index) {
+  screens.forEach((div, i) => {
+    div.classList.toggle('active', i === index);
+  });
+}
+
+function nextScreen() {
+  current = (current + 1) % screens.length;
+  showScreen(current);
+}
+
+function prevScreen() {
+  current = (current - 1 + screens.length) % screens.length;
+  showScreen(current);
+}
+
+right.addEventListener('click', nextScreen);
+left.addEventListener('click', prevScreen);
