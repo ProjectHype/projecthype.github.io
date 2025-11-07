@@ -60,31 +60,27 @@ function scrollBanner() {
 
 // Display Thing:
 
-const screens = [
-  document.getElementById('1'),
-  document.getElementById('2'),
-  document.getElementById('3')
-]
+// --- Marketing Div Slider ---
+const slidesContainer = document.querySelector('.slides');
+const totalScreens = document.querySelectorAll('.marketing-div').length;
 
 const left = document.getElementById('left-button');
 const right = document.getElementById('right-button');
 
-let current = 0; // index of the current visible div
+let current = 0;
 
-function showScreen(index) {
-  screens.forEach((div, i) => {
-    div.classList.toggle('active', i === index);
-  });
+function updateSlide() {
+  slidesContainer.style.transform = `translateX(-${current * 100}%)`;
 }
 
 function nextScreen() {
-  current = (current + 1) % screens.length;
-  showScreen(current);
+  current = (current + 1) % totalScreens;
+  updateSlide();
 }
 
 function prevScreen() {
-  current = (current - 1 + screens.length) % screens.length;
-  showScreen(current);
+  current = (current - 1 + totalScreens) % totalScreens;
+  updateSlide();
 }
 
 right.addEventListener('click', nextScreen);
