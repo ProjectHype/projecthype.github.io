@@ -66,10 +66,6 @@ const screens = [
   document.getElementById('3')
 ]
 
-const one = document.getElementById('1');
-const two = document.getElementById('2');
-const three = document.getElementById('3');
-
 const left = document.getElementById('left-button');
 const right = document.getElementById('right-button');
 
