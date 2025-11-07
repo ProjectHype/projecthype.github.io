@@ -265,51 +265,40 @@ footer {
     filter: brightness(0) invert(1);
 }
 
-/* Make the slider container */
 .marketing-slider {
   position: relative;
   width: 80%;
-  margin: 0 auto;
+  margin: 50px auto;
   overflow: hidden;
+  border-radius: 10px;
 }
 
-/* Slide wrapper (all divs side by side) */
 .slides {
   display: flex;
   transition: transform 0.6s ease-in-out;
 }
 
-/* Each slide */
-.marketing-div {
-  flex: 0 0 100%;
-  box-sizing: border-box;
-  padding: 40px;
-}
-
-/* Optional: center content nicely */
-.side-texts, .side-paragraphs {
-  text-align: center;
-}
-
-/* Position arrows nicely */
-.left-button, .right-button {
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 24px;
-  color: #fff;
+  z-index: 10;
+  color: white;
+  background-color: rgba(0,0,0,0.4);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
 }
 
 .left-button {
-  position: absolute;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
+  left: 10px;
 }
 
 .right-button {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 10px;
 }
+

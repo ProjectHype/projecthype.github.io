@@ -60,28 +60,29 @@ function scrollBanner() {
 
 // Display Thing:
 
-// --- Marketing Div Slider ---
-const slidesContainer = document.querySelector('.slides');
-const totalScreens = document.querySelectorAll('.marketing-div').length;
+document.addEventListener('DOMContentLoaded', () => {
+  const slidesContainer = document.querySelector('.slides');
+  const totalScreens = document.querySelectorAll('.marketing-div').length;
 
-const left = document.getElementById('left-button');
-const right = document.getElementById('right-button');
+  const left = document.getElementById('left-button');
+  const right = document.getElementById('right-button');
 
-let current = 0;
+  let current = 0;
 
-function updateSlide() {
-  slidesContainer.style.transform = `translateX(-${current * 100}%)`;
-}
+  function updateSlide() {
+    slidesContainer.style.transform = `translateX(-${current * 100}%)`;
+  }
 
-function nextScreen() {
-  current = (current + 1) % totalScreens;
-  updateSlide();
-}
+  function nextScreen() {
+    current = (current + 1) % totalScreens;
+    updateSlide();
+  }
 
-function prevScreen() {
-  current = (current - 1 + totalScreens) % totalScreens;
-  updateSlide();
-}
+  function prevScreen() {
+    current = (current - 1 + totalScreens) % totalScreens;
+    updateSlide();
+  }
 
-right.addEventListener('click', nextScreen);
-left.addEventListener('click', prevScreen);
+  right.addEventListener('click', nextScreen);
+  left.addEventListener('click', prevScreen);
+});
