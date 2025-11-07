@@ -265,16 +265,50 @@ footer {
     filter: brightness(0) invert(1);
 }
 
-#left-button {
-  float: left;
-  background-color: #3b82f6;
-  border-radius: 50px;
-
+/* Make the slider container */
+.marketing-slider {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
-#right-button {
-  float: right;
-  background-color: #3b82f6;
-  border-radius: 50px;
-  
+/* Slide wrapper (all divs side by side) */
+.slides {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Each slide */
+.marketing-div {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+  padding: 40px;
+}
+
+/* Optional: center content nicely */
+.side-texts, .side-paragraphs {
+  text-align: center;
+}
+
+/* Position arrows nicely */
+.left-button, .right-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.left-button {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.right-button {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
 }
